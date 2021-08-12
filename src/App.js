@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import SuperheroTable from './Components/SuperheroTable/SuperheroTable';
+import SuperheroCreateForm from './Components/SuperheroCreateForm/SuperheroCreateForm';
 import axios from 'axios';
 
 
@@ -32,14 +33,25 @@ class App extends Component {
     }
   }
 
+  addNewSuperhero(superhero){
+    let tempSuperhero = this.state.superheroes
+    tempSuperhero.push(superhero);
+    this.setState({
+      superheroes: tempSuperhero
+    })
+  }
+
   render() {
-    return (
-      <div>
-        <SuperheroTable heroes={this.state.superheroes}/>
-        {/* <SuperheroCreateForm/> */}
-        {/* <Jokes/> */}
-      </div>
-    )
+    if (this.state.loading) return null;
+    else{
+      return (
+        <React.Fragment>
+          <SuperheroTable heroes={this.state.superheroes}/>
+          <SuperheroCreateForm addNewSuperhero={this.addNewSuperhero.bind(this)} superheroArray={this.state.superheroes}/>
+          {/* <Jokes/> */}
+        </React.Fragment>
+      )
+    }
   }
 }
 
