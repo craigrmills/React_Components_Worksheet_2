@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import SuperheroTable from './Components/SuperheroTable/SuperheroTable';
 import SuperheroCreateForm from './Components/SuperheroCreateForm/SuperheroCreateForm';
+import Jokes from './Components/Jokes/Jokes';
 import axios from 'axios';
 
 
